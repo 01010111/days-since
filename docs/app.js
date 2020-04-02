@@ -14,19 +14,24 @@ Main.calculate_days = function() {
 		return;
 	};
 	var start = Main.start_date.getTime();
-	var days = Math.floor((new Date().getTime() - start) / 86400000);
-	var out = [];
-	var fives = 0;
-	while(days > 5) {
-		out.push("5_" + fives % 4);
-		days -= 5;
-		++fives;
+	var end = new Date().getTime();
+	if(Main.end_date != null && Main.end_date.getTime() < end) {
+		end = Main.end_date.getTime();
 	}
-	out.push("" + days);
+	var days = Math.floor((end - start) / 86400000);
 	if(Main.days_since == days) {
 		return;
 	}
 	Main.days_since = days;
+	var out = [];
+	var fives = 0;
+	var _g = 0;
+	var _g1 = Math.floor(days / 5);
+	while(_g < _g1) {
+		++_g;
+		out.push("images/5_" + fives++ % 4 + ".png");
+	}
+	out.push("images/" + days % 5 + ".png");
 	Main.make_images(out);
 };
 Main.make_images = function(imgs) {
@@ -37,7 +42,7 @@ Main.make_images = function(imgs) {
 	while(_g2 < imgs.length) {
 		var img = imgs[_g2++];
 		var image = window.document.createElement("img");
-		image.src = "images/" + img + ".png";
+		image.src = img;
 		window.document.body.appendChild(image);
 	}
 };
@@ -51,8 +56,8 @@ haxe_Timer.prototype = {
 	run: function() {
 	}
 };
-Main.start_date = new Date(2020,2,11,0,0,0);
 Main.title = "Days in Quarantine";
+Main.start_date = new Date(2020,2,11,0,0,0);
 Main.days_since = 0;
 Main.main();
 })({});

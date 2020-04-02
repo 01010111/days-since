@@ -3,13 +3,24 @@ body {
     background-image: url('images/bg.jpg');
     background-position: center;
     background-size: cover;
-    overflow: hidden;
-    padding: 64px;
     text-align: center;
+    padding: 64px;
     font-size: 32px;
 }
 
 img {
     height: 100px;
     margin: 12px;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        padding: 16px;
+        font-size: 16px;
+    }
+    
+    img {
+        height: 48px;
+        margin: 8px;
+    }
 }
