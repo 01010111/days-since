@@ -2,6 +2,7 @@
 (function ($global) { "use strict";
 var Main = function() { };
 Main.main = function() {
+	window.document.getElementsByTagName("title")[0].innerText = Main.title;
 	var header = window.document.createElement("h1");
 	header.innerText = Main.title;
 	window.document.body.appendChild(header);

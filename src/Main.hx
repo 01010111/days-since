@@ -9,6 +9,7 @@ class Main {
 	static var days_since:Int = 0;
 
 	static function main() {
+		Browser.document.getElementsByTagName('title')[0].innerText = title;
 		var header = Browser.document.createElement('h1');
 		header.innerText = title;
 		Browser.document.body.appendChild(header);
